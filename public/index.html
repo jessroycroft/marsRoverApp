@@ -4,19 +4,63 @@
 	<meta charset="UTF-8">
 	<title>Visit Sunny Mars!</title>
 	<link rel="stylesheet" href="styles/style.css">
-	<link rel="stylesheet" type="text/css" href="js/plugins/datePickerFlat/dist/DateTimePicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="scripts/plugins/datePickerFlat/dist/DateTimePicker.min.css"/>
 	
 </head>
 <body>
 <div class="wrapper">
-	<!-- <p class="tempHigh">High temp: <span>Number</span></p> -->
-	<p class="tempLow">Low Temp: <span>Number</span></p>
-	<p class="skies">Skies today are: <span>value</span></p>
-	<p>Date : </p>
+	<section class="weather">
+		<p class="earthDate">Latest weather data as of: <span>earthDate</span></p>
+		<p class="tempHigh">High temp: <span>Number</span></p>
+		<p class="tempLow">Low Temp: <span>Number</span></p>
+		<p class="skies">Skies today are: <span>value</span></p>
+		<p class="sunrise">Sunrise: <span>sunrise</span></p>
+		<p class="sunset">Sunset: <span>sunset</span></p>
+	</section>
+	<!-- <p>Date : </p>
 	<input type="text" id="datePicker" data-field="date" placeholder="Choose a date" readonly>
-	 <div id="dtBox"></div>
+	 <div id="dtBox"></div> -->
+	
+	<section class="photos">
+		<label for="cameraFhaz">
+			<div class="photoWrapper">	
+				<!-- <img class="roverImage" id="fhaz"> -->
+			</div>
+		</label>
+		<p>Front Hazard Avoidance Camera</p>
+		<p class="error"></p>
+		<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="FHAZ">
+		
+		<label for="cameraRhaz">
+			<div class="photoWrapper">	
+				<!-- <img class="roverImage" id="fhaz"> -->
+			</div>
+		</label>
+		<p>Rear Hazard Avoidance Camera</p>
+		<p class="error"></p>
+		<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraRhaz" value="RHAZ">
 
-	<img>
+		<img class="roverImage" id="mast">
+		<p class="error"></p>
+		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="MAST">Mast Camera</label>
+
+		<img class="roverImage" id="chemcam">
+		<p class="error"></p>
+		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="CHEMCAM">Chemistry and Camera Complex</label>
+
+		<img class="roverImage" id="mahli">
+		<p class="error"></p>
+		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="MAHLI">Mars Hand Lens Imager</label>
+
+		<img class="roverImage" id="mardi">
+		<p class="error"></p>
+		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="MARDI">Mars Descent Imager</label>
+
+		<img class="roverImage" id="navcam">
+		<p class="error"></p>
+		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="NAVCAM">Navigation Camera</label>
+	</section>
+	
 	
 	<button>See another image</button>
 </div>
@@ -25,9 +69,11 @@
 
 
 
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="js/plugins/datePickerFlat/dist/DateTimePicker.js"></script>
+<script src="scripts/plugins/datePickerFlat/dist/DateTimePicker.js"></script>
 <script src="scripts/main.js"></script>
 
 

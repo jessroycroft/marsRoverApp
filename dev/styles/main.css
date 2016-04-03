@@ -1,8 +1,25 @@
 body {
-  background: #e2d5c5; }
+  background: #b85037; }
 
 .wrapper {
-  background: #b85037; }
+  display: flex; }
+
+.weather, .photos {
+  background: #e2d5c5;
+  border: 1px solid grey; }
+
+.weather {
+  width: 20%; }
+
+.photos {
+  width: 80%;
+  order: -1; }
 
 img {
   width: 20%; }
+
+.photoWrapper {
+  background-image: url("https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif");
+  background-size: cover;
+  width: 200px;
+  height: 200px; }

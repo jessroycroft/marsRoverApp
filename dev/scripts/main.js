@@ -2,7 +2,7 @@
 var marsWeather = {};
 
 marsWeather.apiKey = "iLepeSSLC96N6NQp6f9aRSWN3vGAZrtjnZBS5eQS";
-marsWeather.apiUrl = "http://marsweather.ingenology.com/v1/archive/";
+marsWeather.apiUrl = "http://marsweather.ingenology.com/v1/latest/";
 
 // Get weather information
 marsWeather.getInfo = function() {
@@ -19,15 +19,19 @@ marsWeather.getInfo = function() {
 	}).then(function(dataReturn) {
 		console.log(dataReturn);
 		marsWeather.displayInfo(dataReturn);
+		
 	});
 };
 
 // Display weather information
 marsWeather.displayInfo = function(marsWeatherData) {
-	var allWeather = marsWeatherData.results;
+	var allWeather = marsWeatherData.report;
+
+	var earthDate = allWeather.terrestrial_date;
+	$("p.earthDate span").text(earthDate);
 
 	var maxTemp = allWeather.max_temp;
-	$("<p>").text(maxTemp);
+	$("p.tempHigh span").text(maxTemp);
 
 	var minTemp = allWeather.min_temp;
 	$("p.tempLow span").text(minTemp);
@@ -36,10 +40,10 @@ marsWeather.displayInfo = function(marsWeatherData) {
 	$("p.skies span").text(skies);
 
 	var sunrise = allWeather.sunrise;
-	console.log(sunrise);
+	$("p.sunrise span").text(sunrise);
 
 	var sunset = allWeather.sunset;
-	console.log(sunset);
+	$("p.sunset span").text(sunset);
 }
 
 
@@ -47,23 +51,8 @@ marsWeather.init = function() {
 	// $("#datePicker").on("change", function() {
 	// 	var date = $(this).val();
 		
-		marsWeather.getInfo("2016-02-09");
+		marsWeather.getInfo();
 	};
-
-
-
-// Weather API - Archived Weather
-
-// Weather API - Sunrise/Sunset Times
-
-// marsWeather.sunsetSunrise = function(marsWeatherData) {
-// 	var allWeather = marsWeatherData.report;
-// 	var sunrise = allWeather.sunrise;
-// 	console.log(sunrise);
-// 	var sunset = allWeather.sunset;
-// 	console.log(sunset);
-// }
-
 
  // Variables for photo API
 var roverPhotos = {};
@@ -71,21 +60,33 @@ roverPhotos.apiKey = "iLepeSSLC96N6NQp6f9aRSWN3vGAZrtjnZBS5eQS";
 roverPhotos.apiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?";
 
 // Gets the information from 
-roverPhotos.getPhoto = function(date) {
+roverPhotos.getPhoto = function(whichCamera) {
 	$.ajax({
 		url: roverPhotos.apiUrl,
 		method: "GET",
 		dataType: "json",
 		data: {
 			api_key: roverPhotos.apiKey,
-			earth_date: date
+			earth_date: '2016-04-01',
+			camera: whichCamera
 		}
+		// Success Function, call displayPhotos
 	}).then(function(res) {
 		roverPhotos.photos = res;
 		roverPhotos.displayPhoto(roverPhotos.photos);
 		console.log(res);
+		// Error function, no results
+	}, function(error) {
+		error = "it didn't work!";
+		console.log(error);
+		roverPhotos.errorMessage();
 	});
 };
+
+roverPhotos.errorMessage = function() {
+	$("p.error").text("There are no photos from this camera on this date");
+}
+
 
 // Display the photo from the array using the random number
 roverPhotos.displayPhoto = function(roverPics) {
@@ -96,8 +97,13 @@ roverPhotos.displayPhoto = function(roverPics) {
 	console.log(randomNumber());
 	// Grabs the photo that is at the position of the random number
 	var currentPhoto = roverPics.photos[randomNumber()].img_src;
-	$("img").attr("src", currentPhoto);
+	// $("img").attr("src", currentPhoto);
+	$( "label" ).children().css( "background-image", "url(" + currentPhoto + ")" );
 	
+}
+
+roverPhotos.cameras = function(roverPics) {
+
 }
 
 roverPhotos.addListeners = function() {
@@ -121,9 +127,12 @@ roverPhotos.init = function() {
 		var date = $(this).val();
 		console.log(date);
 		roverPhotos.getPhoto(date);
-		// marsWeather.getInfo(date);
-	// console.log(displayPhoto);
 	});
+	$(".cameraChoice").on("click", function() {
+		var whichCamera = $(this).val();
+		console.log(whichCamera);
+		roverPhotos.getPhoto(whichCamera);
+	})
 	roverPhotos.addListeners();
 }
 
