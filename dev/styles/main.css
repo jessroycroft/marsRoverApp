@@ -16,10 +16,21 @@ body {
   order: -1; }
 
 img {
-  width: 20%; }
+  width: 100%;
+  border-radius: 50%;
+  height: 500px; }
 
-.photoWrapper {
-  background-image: url("https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif");
-  background-size: cover;
-  width: 200px;
-  height: 200px; }
+.photoDisplay {
+  width: 80%;
+  height: 500px;
+  border-radius: 50%;
+  transition: background-image 0.4s ease; }
+
+input[type='radio'] {
+  display: none; }
+
+.buttonKnob {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  background: #b85037; }

@@ -60,7 +60,7 @@ roverPhotos.apiKey = "iLepeSSLC96N6NQp6f9aRSWN3vGAZrtjnZBS5eQS";
 roverPhotos.apiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?";
 
 // Gets the information from
-roverPhotos.getPhoto = function (whichCamera) {
+roverPhotos.getPhoto = function () {
 	$.ajax({
 		url: roverPhotos.apiUrl,
 		method: "GET",
@@ -68,13 +68,13 @@ roverPhotos.getPhoto = function (whichCamera) {
 		data: {
 			api_key: roverPhotos.apiKey,
 			earth_date: '2016-04-01',
-			camera: whichCamera
+			camera: roverPhotos.whichCamera
 		}
 		// Success Function, call displayPhotos
 	}).then(function (res) {
 		roverPhotos.photos = res;
-		roverPhotos.displayPhoto(roverPhotos.photos);
 		console.log(res);
+		roverPhotos.displayPhoto(roverPhotos.photos);
 		// Error function, no results
 	}, function (error) {
 		error = "it didn't work!";
@@ -93,14 +93,15 @@ roverPhotos.displayPhoto = function (roverPics) {
 	var randomNumber = function randomNumber() {
 		return Math.floor(Math.random() * roverPics.photos.length);
 	};
-	console.log(randomNumber());
+	var savedNumber = randomNumber();
+	console.log(savedNumber);
 	// Grabs the photo that is at the position of the random number
-	var currentPhoto = roverPics.photos[randomNumber()].img_src;
-	// $("img").attr("src", currentPhoto);
-	$("label").children().css("background-image", "url(" + currentPhoto + ")");
+	var currentPhoto = roverPics.photos[savedNumber].img_src;
+	var cameraName = roverPics.photos[savedNumber].camera.name;
+	console.log(cameraName);
+	$("img").attr("src", currentPhoto);
+	// $("div.photoDisplay").css('background-image', "url('" + currentPhoto + "')");
 };
-
-roverPhotos.cameras = function (roverPics) {};
 
 roverPhotos.addListeners = function () {
 	// Hides "see more photos" button
@@ -118,15 +119,16 @@ roverPhotos.addListeners = function () {
 
 roverPhotos.init = function () {
 	// Changes the value of the date for the API call based on the date selected in the date picker.
-	$("#datePicker").on("change", function () {
-		var date = $(this).val();
-		console.log(date);
-		roverPhotos.getPhoto(date);
-	});
+	// $("#datePicker").on("change", function() {
+	// 	var date = $(this).val();
+	// 	console.log(date);
+	// 	roverPhotos.getPhoto(date);
+	// });
 	$(".cameraChoice").on("click", function () {
-		var whichCamera = $(this).val();
-		console.log(whichCamera);
-		roverPhotos.getPhoto(whichCamera);
+		roverPhotos.whichCamera = $(this).val();
+		console.log(roverPhotos.whichCamera);
+		roverPhotos.getPhoto(roverPhotos.whichCamera);
+		roverPhotos.displayPhoto(roverPhotos.photos);
 	});
 	roverPhotos.addListeners();
 };
