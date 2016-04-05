@@ -93,7 +93,7 @@ roverPhotos.getDate = function (todayDate) {
 	});
 };
 
-// Make an Ajax call
+// Make an Ajax call with the latest viable date and the camera the user selects.
 roverPhotos.getPhoto = function (camera) {
 	// var earthDate = moment().format("YYYY-MM-DD");
 	$.ajax({
@@ -110,9 +110,12 @@ roverPhotos.getPhoto = function (camera) {
 		roverPhotos.photos = res;
 		console.log(res);
 		roverPhotos.displayPhoto(roverPhotos.photos);
+		$("button").show();
+		$("p.buttonLabel").show();
 		// Error function, no results
 	}, function (error) {
 		error = "it didn't work!";
+		// $("button").hide();
 		console.log(error);
 		roverPhotos.errorMessage();
 	});
@@ -120,8 +123,12 @@ roverPhotos.getPhoto = function (camera) {
 
 // Displays error message when there are no photos to display
 roverPhotos.errorMessage = function () {
+	// Hide 'show more images' button if there are no images to show.
+	$("button").hide();
+	$("p.buttonLabel").hide();
+	// Show "static" image and error message
 	$("img").attr("src", "https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif");
-	$("p.error").text("Error: There are no current photos from this camera");
+	$("p.error").css("background", "rgba(0,0,0,0.8)").text("Error: There are no current photos from this camera");
 };
 
 // Display the photo from the array using the random number
@@ -142,10 +149,11 @@ roverPhotos.displayPhoto = function (roverPics) {
 roverPhotos.addListeners = function () {
 	// Hides "see more photos" button
 	$("button").hide();
+	$("p.buttonLabel").hide();
 	// Shows "see more photos" button when you pick a date
-	$(".cameraChoice").on("click", function () {
-		$("button").show();
-	});
+	// $(".cameraChoice").on("click", function() {
+	// 	$("button").show();
+	// })
 	$("button").on("click", function () {
 		roverPhotos.displayPhoto(roverPhotos.photos);
 	});
@@ -157,14 +165,14 @@ roverPhotos.init = function () {
 	$(".cameraChoice").on("click", function () {
 		// Empties images and error message
 		$("img").empty();
-		$("p.error").empty();
+		$("p.error").empty().css("background", "none");
 		// Gets value of button to choose camera
 		roverPhotos.whichCamera = $(this).val();
 		console.log(roverPhotos.whichCamera);
 		// Makes ajax call with that camera value
 		roverPhotos.getPhoto(roverPhotos.whichCamera);
-		$("p.camDisplay").text(roverPhotos.whichCamera);
-		$("p.dateDisplay").text(roverPhotos.useThisDate);
+		$("p.camDisplay").css("background", "rgba(0,0,0,0.8)").text(roverPhotos.whichCamera);
+		$("p.dateDisplay").css("background", "rgba(0,0,0,0.8)").text(roverPhotos.useThisDate);
 	});
 	roverPhotos.addListeners();
 };

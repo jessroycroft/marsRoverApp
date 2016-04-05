@@ -134,7 +134,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @font-face {
   font-family: 'Mil Spec 33558';
-  src: url("fonts/MilSpec33558.ttf"); }
+  src: url("../fonts/MilSpec33558.ttf"); }
 html {
   font-size: 62.5%; }
 
@@ -144,53 +144,100 @@ body {
 .wrapper {
   display: flex; }
 
+header {
+  background: #e6e1c5;
+  padding: 2% 5%;
+  display: flex;
+  align-items: center; }
+
+h1 {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 6rem;
+  color: #415155;
+  text-align: center;
+  width: 50%; }
+  h1 span {
+    font-size: 10rem;
+    letter-spacing: 1.5rem;
+    color: #b85037; }
+
+header p {
+  font-family: "Roboto";
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  color: #415155;
+  line-height: 1.5;
+  width: 60%;
+  margin: 0 auto; }
+
 .weather, .photos {
-  background: #e2d5c5;
   border: 1px solid grey; }
 
 .weather {
-  width: 20%;
+  width: 30%;
+  height: 250px;
   background: black;
   color: #75d023;
   font-family: "Orbitron";
   font-weight: 400;
   text-transform: lowercase;
-  letter-spacing: 1.5px; }
+  letter-spacing: 1.5px;
+  padding: 2%;
+  margin-left: 20px;
+  border-radius: 10%;
+  align-self: center; }
 
 .photos {
-  width: 90%;
   order: -1;
-  display: flex; }
+  display: flex;
+  padding: 2% 5%; }
 
 p {
   font-size: 1.3rem; }
 
-.leftControlPanel {
+.controlPanel {
+  width: 40%;
   order: -1;
   display: flex;
   flex-flow: row wrap; }
-  .leftControlPanel p {
-    width: 150px;
-    font-family: "News Cycle";
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 1.3rem; }
+
+p.buttonLabel, .controlPanel p {
+  width: 150px;
+  font-family: "Mil Spec 33558";
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.3rem; }
 
 img {
   width: 100%;
   border-radius: 20%;
-  height: 500px; }
+  height: 500px;
+  border: 5px solid #070808; }
 
 .photoDisplay {
   width: 600px;
+  height: 500px;
   position: relative; }
+
+.displayOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center; }
 
 p.camDisplay, p.dateDisplay {
   color: #75d023;
   font-weight: bold;
   position: absolute;
-  background: rgba(0, 0, 0, 0.7);
   padding: 5px;
   bottom: 44px;
   font-family: "Orbitron";
@@ -203,13 +250,9 @@ p.dateDisplay {
   left: 52px; }
 
 p.error {
-  position: absolute;
-  top: 50%;
   margin: 0 auto;
-  left: 30px;
-  color: white;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 5px;
+  color: #75d023;
+  padding: 10px;
   font-family: "Orbitron"; }
 
 input[type='radio'] {
@@ -219,21 +262,60 @@ label {
   width: 60px;
   height: 60px; }
 
-.buttonKnob {
+.buttonKnob, button {
   width: 60px;
   height: 60px;
+  margin: 20px;
   position: relative;
   top: 0px;
   border-radius: 100%;
-  background: #b85037;
-  border: #a44731;
-  box-shadow: 0px 10px 0px #913f2b;
+  background: #373e3e;
+  border: 0.5px solid #070808;
+  box-shadow: 0px 10px 0px #181b1b;
   transition: all 0.3s; }
-  .buttonKnob:active {
+  .buttonKnob:active, button:active {
     top: 7px;
-    box-shadow: 0px 3px 0px #913f2b; }
-  .buttonKnob:hover {
+    background: #75d023;
+    box-shadow: 0px 3px 0px #131616; }
+  .buttonKnob:hover, button:hover {
     cursor: pointer; }
 
 .controlPanel {
   display: flex; }
+
+.photos {
+  background-image: url("../images/brushed_alu_dark/brushed_alu_dark.png");
+  padding-bottom: 5%;
+  margin-bottom: 0; }
+
+.buttonWrapper {
+  margin: 0 auto; }
+
+button {
+  -webkit-appearance: none;
+  width: 60px;
+  height: 60px;
+  font-family: "Mil Spec 33558";
+  font-size: 1.4rem;
+  background: #c9392b; }
+  button:focus {
+    outline: none; }
+
+.seeMoreButtonWrapper {
+  position: absolute;
+  left: 220px; }
+
+footer {
+  background: #e6e1c5;
+  margin: 0;
+  padding: 5%; }
+  footer p {
+    margin: 0;
+    padding: 10px;
+    font-family: "Roboto";
+    color: #415155;
+    font-size: 1.6rem;
+    text-align: center; }
+  footer a {
+    text-decoration: none;
+    color: #b85037; }
