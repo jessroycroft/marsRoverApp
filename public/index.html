@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Visit Sunny Mars!</title>
+	<title>Today on Mars!</title>
 	<link rel="stylesheet" href="styles/style.css">
-	<link rel="stylesheet" type="text/css" href="scripts/plugins/datePickerFlat/dist/DateTimePicker.min.css"/>
+	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
 	
 </head>
 <body>
+<header>
+	<h1>Today on Mars</h1>
+	<p>The Curiosity Rover is equipped with seven cameras to send pictures back to us here on the ground. Use the control panel below to see what Curiosity sees! Press a button to see the latest image from each of Curiosity's cameras - press the button again to see another random image from the same camera. Have a look at the beautiful red landscape of our future home!</p>
+</header>
 <div class="wrapper">
 	<section class="weather">
 		<p class="earthDate">Latest weather data as of: <span>earthDate</span></p>
@@ -22,47 +27,59 @@
 	 <div id="dtBox"></div> -->
 	
 	<section class="photos">
+		<!-- Viewport for Rover photos -->
 		<div class="photoDisplay">
 			<img src="https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif">
 			<p class="error"></p>
+			<p class="camDisplay"></p>
+			<p class="dateDisplay"></p>
 		</div>
-
-		<label for="cameraFhaz">
-			<div class="buttonKnob"></div>
-		</label>
-		<p>Front Hazard Avoidance Camera</p>
-		<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="FHAZ">
 		
-		<label for="cameraRhaz">
-			<div class="buttonKnob"></div>
-		</label>
-		<p>Rear Hazard Avoidance Camera</p>
-		<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraRhaz" value="RHAZ">
+		<!-- Radio knobs to choose Rover camera -->
+		<section class="leftControlPanel">
+			<label for="cameraFhaz">
+				<div class="buttonKnob"></div>
+			</label>
+			<p>Front Hazard Avoidance Camera</p>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="FHAZ">
+			
+			<label for="cameraRhaz">
+				<div class="buttonKnob"></div>
+				<p>Rear Hazard Avoidance Camera</p>
+			</label>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraRhaz" value="RHAZ">
 
-		<label for="cameraMast">
-			<div class="buttonKnob"></div>
-		</label>
-		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMast" value="MAST">Mast Camera</label>
+			<label for="cameraMast">
+				<div class="buttonKnob"></div>
+				<p>Mast Camera</p>
+			</label>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMast" value="MAST">
 
-		<label for="cameraChemcam">
-			<div class="buttonKnob"></div>
-		</label>
-		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraChemcam" value="CHEMCAM">Chemistry and Camera Complex</label>
+			<label for="cameraChemcam">
+				<div class="buttonKnob"></div>
+				<p>Chemistry and Camera Complex</p>
+			</label>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraChemcam" value="CHEMCAM">
+		</section>
+		<section class="rightControlPanel">
+			<label for="cameraMahli">
+				<div class="buttonKnob"></div>
+				<p>Mars Hand Lens Imager</p>
+			</label>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMahli" value="MAHLI">
 
-		<label for="cameraMahli">
-			<div class="buttonKnob"></div>
-		</label>
-		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMahli" value="MAHLI">Mars Hand Lens Imager</label>
+			<label for="cameraMardi">
+				<div class="buttonKnob"></div>
+				<p>Mars Descent Imager</p>
+			</label>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMardi" value="MARDI">
 
-		<label for="cameraMardi">
-			<div class="buttonKnob"></div>
-		</label>
-		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMardi" value="MARDI">Mars Descent Imager</label>
-
-		<label for="cameraNavcam">
-			<div class="buttonKnob"></div>
-		</label>
-		<label><input type="radio" class="cameraChoice" name="cameraChoice" id="cameraNavcam" value="NAVCAM">Navigation Camera</label>
+			<label for="cameraNavcam">
+				<div class="buttonKnob"></div>
+				<p>Navigation Camera</p>
+			</label>
+			<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraNavcam" value="NAVCAM">
+		</section>
 	</section>
 	
 	
@@ -77,7 +94,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="scripts/plugins/datePickerFlat/dist/DateTimePicker.js"></script>
 <script src="scripts/main.js"></script>
 
 

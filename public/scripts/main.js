@@ -1,6 +1,12 @@
 "use strict";
 
-3; //Variables for weather API - Latest weather
+///////////////////////////
+//                       //
+// WEATHER API FUNCTIONS //
+//                      //
+//////////////////////////
+
+//Variables for weather API - Latest weather
 var marsWeather = {};
 
 marsWeather.apiKey = "iLepeSSLC96N6NQp6f9aRSWN3vGAZrtjnZBS5eQS";
@@ -48,26 +54,55 @@ marsWeather.displayInfo = function (marsWeatherData) {
 };
 
 marsWeather.init = function () {
-	// $("#datePicker").on("change", function() {
-	// 	var date = $(this).val();
-
 	marsWeather.getInfo();
 };
+
+//////////////////////////
+//                      //
+// PHOTO API FUNCTIONS  //
+//                      //
+//////////////////////////
 
 // Variables for photo API
 var roverPhotos = {};
 roverPhotos.apiKey = "iLepeSSLC96N6NQp6f9aRSWN3vGAZrtjnZBS5eQS";
 roverPhotos.apiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?";
 
-// Gets the information from
-roverPhotos.getPhoto = function () {
+roverPhotos.todayDate = moment();
+// Makes an Ajax call with today's date, from moment.js
+roverPhotos.getDate = function (todayDate) {
+	console.log(roverPhotos.todayDate);
 	$.ajax({
 		url: roverPhotos.apiUrl,
 		method: "GET",
 		dataType: "json",
 		data: {
 			api_key: roverPhotos.apiKey,
-			earth_date: '2016-04-01',
+			// Turns today's date into proper format
+			earth_date: todayDate.format("YYYY-MM-DD")
+		}
+		// Success Function, save the successful date into a new variable
+	}).then(function () {
+		roverPhotos.useThisDate = todayDate.format("YYYY-MM-DD");
+		// Error function, no results. Subtract one day from today's date and make Ajax call again with new date.
+	}, function (error) {
+		error = "no pictures for this date!";
+		console.log(error);
+		// var earthDate = moment().subtract(1, "day");
+		roverPhotos.getDate(todayDate.subtract(1, "day"));
+	});
+};
+
+// Make an Ajax call
+roverPhotos.getPhoto = function (camera) {
+	// var earthDate = moment().format("YYYY-MM-DD");
+	$.ajax({
+		url: roverPhotos.apiUrl,
+		method: "GET",
+		dataType: "json",
+		data: {
+			api_key: roverPhotos.apiKey,
+			earth_date: roverPhotos.useThisDate,
 			camera: roverPhotos.whichCamera
 		}
 		// Success Function, call displayPhotos
@@ -83,8 +118,10 @@ roverPhotos.getPhoto = function () {
 	});
 };
 
+// Displays error message when there are no photos to display
 roverPhotos.errorMessage = function () {
-	$("p.error").text("There are no photos from this camera on this date");
+	$("img").attr("src", "https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif");
+	$("p.error").text("Error: There are no current photos from this camera");
 };
 
 // Display the photo from the array using the random number
@@ -100,14 +137,13 @@ roverPhotos.displayPhoto = function (roverPics) {
 	var cameraName = roverPics.photos[savedNumber].camera.name;
 	console.log(cameraName);
 	$("img").attr("src", currentPhoto);
-	// $("div.photoDisplay").css('background-image', "url('" + currentPhoto + "')");
 };
 
 roverPhotos.addListeners = function () {
 	// Hides "see more photos" button
 	$("button").hide();
 	// Shows "see more photos" button when you pick a date
-	$("#datePicker").on("change", function () {
+	$(".cameraChoice").on("click", function () {
 		$("button").show();
 	});
 	$("button").on("click", function () {
@@ -118,30 +154,29 @@ roverPhotos.addListeners = function () {
 // Photo init
 
 roverPhotos.init = function () {
-	// Changes the value of the date for the API call based on the date selected in the date picker.
-	// $("#datePicker").on("change", function() {
-	// 	var date = $(this).val();
-	// 	console.log(date);
-	// 	roverPhotos.getPhoto(date);
-	// });
 	$(".cameraChoice").on("click", function () {
+		// Empties images and error message
+		$("img").empty();
+		$("p.error").empty();
+		// Gets value of button to choose camera
 		roverPhotos.whichCamera = $(this).val();
 		console.log(roverPhotos.whichCamera);
+		// Makes ajax call with that camera value
 		roverPhotos.getPhoto(roverPhotos.whichCamera);
-		roverPhotos.displayPhoto(roverPhotos.photos);
+		$("p.camDisplay").text(roverPhotos.whichCamera);
+		$("p.dateDisplay").text(roverPhotos.useThisDate);
 	});
 	roverPhotos.addListeners();
 };
 
-// var time = moment().format("YYYY-MM-DD");
+//////////////////////////
+//                      //
+//    DOCUMENT READY    //
+//                      //
+//////////////////////////
 
 $(function () {
+	roverPhotos.getDate(moment());
 	marsWeather.init();
 	roverPhotos.init();
-
-	// Date Picker
-	$("#dtBox").DateTimePicker({
-		isPopup: false,
-		dateFormat: "yyyy-MM-dd"
-	});
 });
