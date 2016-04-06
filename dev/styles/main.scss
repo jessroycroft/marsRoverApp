@@ -6,10 +6,15 @@ html {
 }
 body {
 	background: $orangeRed;
+	margin: 20px 0;
 }
 
 .wrapper {
 	display: flex;
+	@media (max-width: 736px) {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 header {
@@ -17,6 +22,24 @@ header {
 	padding: 2% 5%;
 	display: flex;
 	align-items: center;
+	background-image: url("../images/marsrover.svg");
+	background-repeat: no-repeat;
+	background-size: 400px;
+	background-position: right top;
+	position: relative;
+	@media (max-width: 768px) {
+		background-image: none;
+	}
+	img {
+		position: absolute;
+		left: -107px;
+		width: 425px;
+		top: 86px;
+	}
+	@media (max-width: 848px) {
+		flex-direction: column;
+		padding: 2%;
+	}
 }
 
 h1 {
@@ -27,10 +50,21 @@ h1 {
 	color: $blueGrey;
 	text-align: center;
 	width: 50%;
+	z-index: 200;
+	@media (max-width: 848px) {
+		width: 100%;
+		margin-bottom: 0;
+	}
+	@media (max-width: 720px) {
+		font-size: 5rem;
+		}
 	span {
 		font-size: 10rem;
 		letter-spacing: 1.5rem;
 		color: $orangeRed;
+		@media (max-width: 720px) {
+			font-size: 7rem;
+		}
 	}
 }
 
@@ -43,17 +77,42 @@ header p {
 	line-height: 1.5;
 	width: 60%;
 	margin: 0 auto;
+	z-index: 200;
+	@media (max-width: 1000px) {
+		width: 100%;
+		padding: 5%;
+	}
 }
 
-.weather, .photos {
-	// background: $pale;
-	border: 1px solid grey;
+.sidePanel {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-width: 169px;
+	h3 {
+		text-align: center;
+	}
+	.legend {
+		display: none;
+		h3 {
+			padding-bottom: 10px;
+		}
+	}
+	@media (max-width: 736px) {
+		flex-direction: row;
+		.panelHeader, .legend {
+			width: 50%;
+		}
+		.legend {
+			display: block;
+			align-self: flex-end;
+		}
+	}
+
 }
 
-.weather {
-	width: 30%;
-	height: 250px;
-	background: black;
+.weatherPanel {
+	background: $darkGreen;
 	color: $green;
 	font-family: "Orbitron";
 	font-weight: 400;
@@ -62,13 +121,21 @@ header p {
 	padding: 2%;
 	margin-left: 20px;
 	border-radius: 10%;
-	align-self: center;
 }
 
 .photos {
 	order: -1;
 	display: flex;
-	padding: 2% 5%;
+	padding: 5%;
+	z-index: 200;
+	width: 100%;
+	@media (max-width: 736px) {
+		flex-direction: column;
+	}
+	@media (max-width: 320px) {
+		padding: 2%;
+	}
+
 }
 
 p {
@@ -76,13 +143,35 @@ p {
 }
 
 .controlPanel {
-	width: 40%;
+	width: 30%;
+	max-width: 300px;
 	order: -1;
 	display: flex;
 	flex-flow: row wrap;
+	// justify-content: center;
+	@media (max-width: 1150px) {
+		width: 42%;
+	}
+	@media (max-width: 1134px) {
+		width: 50%;
+	}
+	@media (max-width: 1050px) {
+		width: 60%;
+	}
+	@media (max-width: 736px) {
+		order: 0;
+		width: 80%;
+		margin: 0 auto;
+		padding-top: 20px;
+	}
+	.buttonWrapper {
+		@media (max-width: 736px) {
+			width: 20%;
+		}
+	}
 }
 
-p.buttonLabel, .controlPanel p {
+p.buttonLabel, .controlPanel p, h3, .legend p {
 	width: 150px;
 	font-family: "Mil Spec 33558";
 	color: rgba(0,0,0, 0.7);
@@ -91,8 +180,33 @@ p.buttonLabel, .controlPanel p {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-size: 1.3rem;
+	padding-top: 10px;
+	@media (max-width: 1134px) {
+		font-size: 1.2rem;
+		}
+	@media (max-width: 1000px) {
+		width: auto;
+		}
+	@media (max-width: 736px) {
+		font-size: 1rem;
+	}
 }
-img {
+
+.numberLabel {
+	display: none;
+	@media (max-width: 736px) {
+		display: block;
+	}
+}
+
+.textLabel {
+	display: block;
+	@media (max-width: 736px) {
+		display: none;
+	}
+}
+
+.display {
 	width: 100%;
 	border-radius: 20%;
 	height: 500px;
@@ -100,9 +214,16 @@ img {
 }
 
 .photoDisplay {
-	width: 600px;
-	height: 500px;
+	min-width: 350px;
+	min-height: 200px;
+	max-width: 600px;
+	max-height: 500px;
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	@media (max-width: 1000px) {
+		width: 100%;
+	}
 }
 
 .displayOverlay {
@@ -144,16 +265,16 @@ input[type='radio'] {
 }
 
 label {
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 }
 
 .buttonKnob, button {
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	margin: 20px;
 	position: relative;
-	top: 0px;
+	top: 0;
 	border-radius: 100%;
 	background: lighten($codgrey, 20%);
 	border: 0.5px solid $codgrey;
@@ -167,11 +288,19 @@ label {
 	&:hover {
 		cursor: pointer;
 	}
+	@media (max-width: 1134px) {
+		margin: 0;
+	}
+	@media (max-width: 736px) {
+		width: 40px;
+		height: 40px;
+	}
 }
 
-.controlPanel {
-	display: flex;
+.buttonKnob {
+	background: $orangeRed;
 }
+
 
 .photos {
 	background-image: url('../images/brushed_alu_dark/brushed_alu_dark.png');
@@ -180,25 +309,29 @@ label {
 }
 
 .buttonWrapper {
-	margin: 0 auto;
+	@media (max-width: 1000px) {
+		// margin: 0;
+		width: 40%;
+	}
+}
+
+.seeMoreButtonWrapper {
+	order: 7;
+	@media (max-width: 736px) {
+		order: 0;
+	}
 }
 
 button {
 	-webkit-appearance: none;
-	width: 60px;
-	height: 60px;
 	font-family: "Mil Spec 33558";
 	font-size: 1.4rem;
 	background: $red;
+	margin-top: 10px;
 	&:focus {
 		outline: none;
 	}
 
-}
-
-.seeMoreButtonWrapper {
-	position: absolute;
-	left: 220px;
 }
 
 footer {
@@ -216,5 +349,16 @@ footer {
 	a {
 		text-decoration: none;
 		color: $orangeRed;
+		font-weight: 900;
+		transition: all 0.4s ease;
+		&:hover {
+			color: $red;
+		}
+	}
+	img {
+		display: block;
+		width: 60px;
+		margin: 0 auto;
+		padding-top: 2%;
 	}
 }

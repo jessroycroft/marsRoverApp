@@ -24,7 +24,6 @@ marsWeather.getInfo = function() {
 			// terrestrial_date_end: date
 		}
 	}).then(function(dataReturn) {
-		console.log(dataReturn);
 		marsWeather.displayInfo(dataReturn);
 		
 	});
@@ -87,8 +86,6 @@ roverPhotos.getDate = function(todayDate) {
 		roverPhotos.useThisDate = todayDate.format("YYYY-MM-DD");
 		// Error function, no results. Subtract one day from today's date and make Ajax call again with new date.
 	}, function(error) {
-		error = "no pictures for this date!";
-		console.log(error);
 		// var earthDate = moment().subtract(1, "day");
 		roverPhotos.getDate( todayDate.subtract(1, "day") );
 	});
@@ -109,15 +106,12 @@ roverPhotos.getPhoto = function(camera) {
 		// Success Function, call displayPhotos
 	}).then(function(res) {
 		roverPhotos.photos = res;
-		console.log(res);
 		roverPhotos.displayPhoto(roverPhotos.photos);
 		$("button").show();
 		$("p.buttonLabel").show();
 		// Error function, no results
 	}, function(error) {
 		error = "it didn't work!";
-		// $("button").hide();
-		console.log(error);
 		roverPhotos.errorMessage();
 	});
 };
@@ -128,8 +122,8 @@ roverPhotos.errorMessage = function() {
 	$("button").hide();
 	$("p.buttonLabel").hide();
 	// Show "static" image and error message
-	$("img").attr("src", "https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif");
-	$("p.error").css("background", "rgba(0,0,0,0.8)").text("Error: There are no current photos from this camera");
+	$("img.display").attr("src", "https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif");
+	$("p.error").css("background", "rgba(0,0,0,0.8)").text("Error: No current photos from this camera. Please select another.");
 }
 
 // Display the photo from the array using the random number
@@ -139,22 +133,17 @@ roverPhotos.displayPhoto = function(roverPics) {
 		return Math.floor(Math.random() * roverPics.photos.length);
 	};
 	var savedNumber = randomNumber();
-	console.log(savedNumber);
 	// Grabs the photo that is at the position of the random number
 	var currentPhoto = roverPics.photos[savedNumber].img_src;
 	var cameraName = roverPics.photos[savedNumber].camera.name;
-	console.log(cameraName);
-	$("img").attr("src", currentPhoto);
+	$("img.display").attr("src", currentPhoto);
 }
 
 roverPhotos.addListeners = function() {
 	// Hides "see more photos" button
 	$("button").hide();
 	$("p.buttonLabel").hide();
-	// Shows "see more photos" button when you pick a date
-	// $(".cameraChoice").on("click", function() {
-	// 	$("button").show();
-	// })
+	// Displays a new random photo from the same camera
 	$("button").on("click", function() {
 		roverPhotos.displayPhoto(roverPhotos.photos);
 	});
@@ -165,11 +154,10 @@ roverPhotos.addListeners = function() {
 roverPhotos.init = function() {
 	$(".cameraChoice").on("click", function() {
 		// Empties images and error message
-		$("img").empty();
+		$("img.display").empty();
 		$("p.error").empty().css("background", "none");
 		// Gets value of button to choose camera
 		roverPhotos.whichCamera = $(this).val();
-		console.log(roverPhotos.whichCamera);
 		// Makes ajax call with that camera value
 		roverPhotos.getPhoto(roverPhotos.whichCamera);
 		$("p.camDisplay").css("background", "rgba(0,0,0,0.8)").text(roverPhotos.whichCamera);

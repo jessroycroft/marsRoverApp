@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Today on Mars!</title>
+	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" href="styles/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,900' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
@@ -12,22 +13,20 @@
 <body>
 <header>
 	<h1>Today on <br><span>Mars!</span></h1>
-	<p>Never has there been a more exciting time for humanity as we prepare to leave behind the scorched remains of our wasted Earth, and look instead to the Great Red Hope of our brother planet, Mars! Now you can see what the intrepid Curiosity Rover sees as it blazes the trail, sending back data to us here on the ground. Select a camera from the control panel below to see the latest images of the beautiful, untamed landscape of our future home.</p>
+	<img src="images/marsplanet.svg" alt="Illustration of Mars">
+	<p>Never has there been a more exciting time for humanity as we prepare to leave behind the scorched remains of our wasting Earth, and look instead to the hopeful dunes of Mars! Now you can see what the intrepid Curiosity Rover sees as it blazes the trail, sending back data to us here on the ground. Select a camera from the control panel below to see the latest images of the beautiful, untamed landscape of our future home.</p>
+	<!-- <img src="images/marsrover.svg" alt=""> -->
 </header>
 <div class="wrapper">
 	
 	<section class="photos">
 		<!-- Viewport for Rover photos -->
 		<div class="photoDisplay">
-			<img src="https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif">
+			<img class="display" src="https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif">
 			<div class="displayOverlay">
 				<p class="error"></p>
 				<p class="camDisplay"></p>
 				<p class="dateDisplay"></p>
-			</div>
-			<div class="buttonWrapper seeMoreButtonWrapper">
-				<button></button>
-				<p class="buttonLabel">See another image</p>
 			</div>
 		</div>
 		
@@ -37,7 +36,8 @@
 				<label for="cameraFhaz">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Front Hazard Avoidance Camera</p>
+				<p class="textLabel">Front Hazard Avoidance Camera</p>
+				<p class="numberLabel">1</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="FHAZ">
 			</div>
 			
@@ -45,7 +45,8 @@
 				<label for="cameraRhaz">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Rear Hazard Avoidance Camera</p>
+				<p class="textLabel">Rear Hazard Avoidance Camera</p>
+				<p class="numberLabel">2</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraRhaz" value="RHAZ">
 			</div>
 			
@@ -53,7 +54,8 @@
 				<label for="cameraMast">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Mast Camera</p>
+				<p class="textLabel">Mast Camera</p>
+				<p class="numberLabel">3</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMast" value="MAST">
 			</div>
 			
@@ -61,7 +63,8 @@
 				<label for="cameraChemcam">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Chemistry and Camera Complex</p>
+				<p class="textLabel">Chemistry and Camera Complex</p>
+				<p class="numberLabel">4</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraChemcam" value="CHEMCAM">
 			</div>
 		<!-- </section>
@@ -70,7 +73,8 @@
 				<label for="cameraMahli">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Mars Hand Lens Imager</p>
+				<p class="textLabel">Mars Hand Lens Imager</p>
+				<p class="numberLabel">5</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMahli" value="MAHLI">
 			</div>
 			
@@ -78,43 +82,59 @@
 				<label for="cameraMardi">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Mars Descent Imager</p>
+				<p class="textLabel">Mars Descent Imager</p>
+				<p class="numberLabel">6</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMardi" value="MARDI">
+			</div>
+
+			<div class="buttonWrapper seeMoreButtonWrapper">
+				<button></button>
+				<p class="buttonLabel">See another image</p>
 			</div>
 			
 			<div class="buttonWrapper">
 				<label for="cameraNavcam">
 					<div class="buttonKnob"></div>
 				</label>
-				<p>Navigation Camera</p>
+				<p class="textLabel">Navigation Camera</p>
+				<p class="numberLabel">7</p>
 				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraNavcam" value="NAVCAM">
 			</div>
 		</section>
-		<section class="weather">
-			<h3>Atmosphere Conditions</h3>
-			<div class="weatherPanel">
-				<p class="earthDate">Latest weather data as of: <span>earthDate</span></p>
-				<p class="tempHigh">High temp: <span>Number</span></p>
-				<p class="tempLow">Low Temp: <span>Number</span></p>
-				<p class="skies">Skies today are: <span>value</span></p>
-				<p class="sunrise">Sunrise: <span>sunrise</span></p>
-				<p class="sunset">Sunset: <span>sunset</span></p>
+		<section class="sidePanel">
+			<div class="legend">
+				<h3>Camera Controls</h3>
+				<p>1: Front Hazard Avoidance Camera</p>
+				<p>2: Rear Hazard Avoidance Camera</p>
+				<p>3: Mast Camera</p>
+				<p>4: Chemistry and Camera Complex</p>
+				<p>5: Mars Hand Lens Imager</p>
+				<p>6: Mars Descent Imager</p>
+				<p>7: Navigation Camera</p>
 			</div>
+			<div class="panelHeader">
+				<h3>Atmosphere Conditions</h3>
+				<div class="weatherPanel">
+					<p class="earthDate">Latest weather data as of: <span>earthDate</span></p>
+					<p class="tempHigh">High temp: <span>Number</span></p>
+					<p class="tempLow">Low Temp: <span>Number</span></p>
+					<p class="skies">Skies today are: <span>value</span></p>
+					<p class="sunrise">Sunrise: <span>sunrise</span></p>
+					<p class="sunset">Sunset: <span>sunset</span></p>
+				</div>
+			</div>
+			
+			
 		</section>
 	</section>
 
 </div>
 <footer>
 	<p>Designed and developed by <a href="http://jessroycroft.com">Jess Roycroft</a> - 2016</p>
-	<p>Thanks to NASA for their APIs, and Curiosity for all its hard work.</p>
+	<p>Illustrations by Anthony Bossard, Oliviu Stoian, and Greer Mosher from the <a href="http://thenounproject.com">The Noun Project</a>.</p>
+	<p>Thanks to <a href="https://api.nasa.gov/api.html">NASA</a> and <a href="http://marsweather.ingenology.com">MAAS</a> for their APIs, and Curiosity for all its hard work.</p>
+	<img src='../images/robotrover.svg' alt="illustration of Curiostity Rover">
 </footer>
-
-
-
-
-
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>

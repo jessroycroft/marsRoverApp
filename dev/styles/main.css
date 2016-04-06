@@ -139,16 +139,38 @@ html {
   font-size: 62.5%; }
 
 body {
-  background: #b85037; }
+  background: #b85037;
+  margin: 20px 0; }
 
 .wrapper {
   display: flex; }
+  @media (max-width: 736px) {
+    .wrapper {
+      display: flex;
+      flex-direction: column; } }
 
 header {
   background: #e6e1c5;
   padding: 2% 5%;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  background-image: url("../images/marsrover.svg");
+  background-repeat: no-repeat;
+  background-size: 400px;
+  background-position: right top;
+  position: relative; }
+  @media (max-width: 768px) {
+    header {
+      background-image: none; } }
+  header img {
+    position: absolute;
+    left: -107px;
+    width: 425px;
+    top: 86px; }
+  @media (max-width: 848px) {
+    header {
+      flex-direction: column;
+      padding: 2%; } }
 
 h1 {
   font-family: "Roboto";
@@ -157,11 +179,22 @@ h1 {
   font-size: 6rem;
   color: #415155;
   text-align: center;
-  width: 50%; }
+  width: 50%;
+  z-index: 200; }
+  @media (max-width: 848px) {
+    h1 {
+      width: 100%;
+      margin-bottom: 0; } }
+  @media (max-width: 720px) {
+    h1 {
+      font-size: 5rem; } }
   h1 span {
     font-size: 10rem;
     letter-spacing: 1.5rem;
     color: #b85037; }
+    @media (max-width: 720px) {
+      h1 span {
+        font-size: 7rem; } }
 
 header p {
   font-family: "Roboto";
@@ -171,15 +204,35 @@ header p {
   color: #415155;
   line-height: 1.5;
   width: 60%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  z-index: 200; }
+  @media (max-width: 1000px) {
+    header p {
+      width: 100%;
+      padding: 5%; } }
 
-.weather, .photos {
-  border: 1px solid grey; }
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 169px; }
+  .sidePanel h3 {
+    text-align: center; }
+  .sidePanel .legend {
+    display: none; }
+    .sidePanel .legend h3 {
+      padding-bottom: 10px; }
+  @media (max-width: 736px) {
+    .sidePanel {
+      flex-direction: row; }
+      .sidePanel .panelHeader, .sidePanel .legend {
+        width: 50%; }
+      .sidePanel .legend {
+        display: block;
+        align-self: flex-end; } }
 
-.weather {
-  width: 30%;
-  height: 250px;
-  background: black;
+.weatherPanel {
+  background: #0a1702;
   color: #75d023;
   font-family: "Orbitron";
   font-weight: 400;
@@ -187,24 +240,50 @@ header p {
   letter-spacing: 1.5px;
   padding: 2%;
   margin-left: 20px;
-  border-radius: 10%;
-  align-self: center; }
+  border-radius: 10%; }
 
 .photos {
   order: -1;
   display: flex;
-  padding: 2% 5%; }
+  padding: 5%;
+  z-index: 200;
+  width: 100%; }
+  @media (max-width: 736px) {
+    .photos {
+      flex-direction: column; } }
+  @media (max-width: 320px) {
+    .photos {
+      padding: 2%; } }
 
 p {
   font-size: 1.3rem; }
 
 .controlPanel {
-  width: 40%;
+  width: 30%;
+  max-width: 300px;
   order: -1;
   display: flex;
   flex-flow: row wrap; }
+  @media (max-width: 1150px) {
+    .controlPanel {
+      width: 42%; } }
+  @media (max-width: 1134px) {
+    .controlPanel {
+      width: 50%; } }
+  @media (max-width: 1050px) {
+    .controlPanel {
+      width: 60%; } }
+  @media (max-width: 736px) {
+    .controlPanel {
+      order: 0;
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 20px; } }
+  @media (max-width: 736px) {
+    .controlPanel .buttonWrapper {
+      width: 20%; } }
 
-p.buttonLabel, .controlPanel p {
+p.buttonLabel, .controlPanel p, h3, .legend p {
   width: 150px;
   font-family: "Mil Spec 33558";
   color: rgba(0, 0, 0, 0.7);
@@ -212,18 +291,47 @@ p.buttonLabel, .controlPanel p {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+  padding-top: 10px; }
+  @media (max-width: 1134px) {
+    p.buttonLabel, .controlPanel p, h3, .legend p {
+      font-size: 1.2rem; } }
+  @media (max-width: 1000px) {
+    p.buttonLabel, .controlPanel p, h3, .legend p {
+      width: auto; } }
+  @media (max-width: 736px) {
+    p.buttonLabel, .controlPanel p, h3, .legend p {
+      font-size: 1rem; } }
 
-img {
+.numberLabel {
+  display: none; }
+  @media (max-width: 736px) {
+    .numberLabel {
+      display: block; } }
+
+.textLabel {
+  display: block; }
+  @media (max-width: 736px) {
+    .textLabel {
+      display: none; } }
+
+.display {
   width: 100%;
   border-radius: 20%;
   height: 500px;
   border: 5px solid #070808; }
 
 .photoDisplay {
-  width: 600px;
-  height: 500px;
-  position: relative; }
+  min-width: 350px;
+  min-height: 200px;
+  max-width: 600px;
+  max-height: 500px;
+  position: relative;
+  display: flex;
+  flex-direction: column; }
+  @media (max-width: 1000px) {
+    .photoDisplay {
+      width: 100%; } }
 
 .displayOverlay {
   position: absolute;
@@ -259,15 +367,15 @@ input[type='radio'] {
   display: none; }
 
 label {
-  width: 60px;
-  height: 60px; }
+  width: 50px;
+  height: 50px; }
 
 .buttonKnob, button {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   margin: 20px;
   position: relative;
-  top: 0px;
+  top: 0;
   border-radius: 100%;
   background: #373e3e;
   border: 0.5px solid #070808;
@@ -279,31 +387,40 @@ label {
     box-shadow: 0px 3px 0px #131616; }
   .buttonKnob:hover, button:hover {
     cursor: pointer; }
+  @media (max-width: 1134px) {
+    .buttonKnob, button {
+      margin: 0; } }
+  @media (max-width: 736px) {
+    .buttonKnob, button {
+      width: 40px;
+      height: 40px; } }
 
-.controlPanel {
-  display: flex; }
+.buttonKnob {
+  background: #b85037; }
 
 .photos {
   background-image: url("../images/brushed_alu_dark/brushed_alu_dark.png");
   padding-bottom: 5%;
   margin-bottom: 0; }
 
-.buttonWrapper {
-  margin: 0 auto; }
+@media (max-width: 1000px) {
+  .buttonWrapper {
+    width: 40%; } }
+
+.seeMoreButtonWrapper {
+  order: 7; }
+  @media (max-width: 736px) {
+    .seeMoreButtonWrapper {
+      order: 0; } }
 
 button {
   -webkit-appearance: none;
-  width: 60px;
-  height: 60px;
   font-family: "Mil Spec 33558";
   font-size: 1.4rem;
-  background: #c9392b; }
+  background: #c9392b;
+  margin-top: 10px; }
   button:focus {
     outline: none; }
-
-.seeMoreButtonWrapper {
-  position: absolute;
-  left: 220px; }
 
 footer {
   background: #e6e1c5;
@@ -318,4 +435,13 @@ footer {
     text-align: center; }
   footer a {
     text-decoration: none;
-    color: #b85037; }
+    color: #b85037;
+    font-weight: 900;
+    transition: all 0.4s ease; }
+    footer a:hover {
+      color: #c9392b; }
+  footer img {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+    padding-top: 2%; }
