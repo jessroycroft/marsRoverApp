@@ -21,8 +21,6 @@ marsWeather.getInfo = function () {
 		dataType: "json",
 		data: {
 			reqUrl: marsWeather.apiUrl
-			// terrestrial_date_start: date,
-			// terrestrial_date_end: date
 		}
 	}).then(function (dataReturn) {
 		marsWeather.displayInfo(dataReturn);
@@ -70,7 +68,6 @@ roverPhotos.apiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/p
 roverPhotos.todayDate = moment();
 // Makes an Ajax call with today's date, from moment.js
 roverPhotos.getDate = function (todayDate) {
-	console.log(roverPhotos.todayDate);
 	$.ajax({
 		url: roverPhotos.apiUrl,
 		method: "GET",

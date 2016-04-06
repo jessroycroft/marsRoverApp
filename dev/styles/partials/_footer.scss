@@ -1,0 +1,28 @@
+footer {
+	background: $yellow;
+	margin: 0;
+	padding: 5%;
+	p {
+		margin: 0;
+		padding: 10px;
+		font-family: "Roboto";
+		color: $blueGrey;
+		font-size: 1.6rem;
+		text-align: center;
+	}
+	a {
+		text-decoration: none;
+		color: $orangeRed;
+		font-weight: 900;
+		transition: all 0.4s ease;
+		&:hover {
+			color: $red;
+		}
+	}
+	img {
+		display: block;
+		width: 60px;
+		margin: 0 auto;
+		padding-top: 2%;
+	}
+}

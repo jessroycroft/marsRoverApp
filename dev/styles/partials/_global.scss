@@ -1,0 +1,29 @@
+html {
+	font-size: 62.5%;
+}
+body {
+	background: $orangeRed;
+	margin: 20px 0;
+}
+
+.wrapper {
+	display: flex;
+	margin: 0 auto;
+	@media (max-width: 736px) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.innerWrapper {
+	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
+	@media (max-width: 736px) {
+		flex-direction: column;
+	}
+}
+
+p {
+	font-size: 1.3rem;
+}

@@ -1,0 +1,70 @@
+.photos {
+	order: -1;
+	padding: 5%;
+	z-index: 200;
+	width: 100%;
+	background-image: url('../images/brushed_alu_dark/brushed_alu_dark.png');
+	margin-bottom: 0;
+	@media (max-width: 360px) {
+		padding: 1%;
+	}
+	@media (max-width: 320px) {
+		padding: 2%;
+	}
+
+}
+
+.display {
+	width: 100%;
+	border-radius: 20%;
+	height: 500px;
+	border: 5px solid $codgrey;
+}
+
+.photoDisplay {
+	min-width: 350px;
+	min-height: 200px;
+	max-width: 600px;
+	max-height: 500px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	@media (max-width: 1000px) {
+		width: 100%;
+	}
+}
+
+.displayOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+}
+
+p.camDisplay, p.dateDisplay {
+	color: $green;
+	font-weight: bold;
+	position: absolute;
+	padding: 5px;
+	bottom: 44px;
+	font-family: "Orbitron";
+	font-weight: 400;
+}
+
+p.camDisplay {
+	right: 52px;
+}
+
+p.dateDisplay {
+	left: 52px;
+}
+
+p.error {
+	margin: 0 auto;
+	color: $green;
+	padding: 10px;
+	font-family: "Orbitron";
+}

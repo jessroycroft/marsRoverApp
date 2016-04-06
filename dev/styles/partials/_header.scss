@@ -1,0 +1,67 @@
+header {
+	background: $yellow;
+	padding: 2% 5%;
+	background-image: url("../images/marsrover.svg");
+	background-repeat: no-repeat;
+	background-size: 400px;
+	background-position: right top;
+	position: relative;
+	.innerWrapper {
+		align-items: center;
+	}
+	@media (max-width: 768px) {
+		background-image: none;
+	}
+	img {
+		position: absolute;
+		left: -107px;
+		width: 425px;
+		top: 86px;
+	}
+	@media (max-width: 848px) {
+		flex-direction: column;
+		padding: 2%;
+	}
+}
+
+h1 {
+	font-family: "Roboto";
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: 6rem;
+	color: $blueGrey;
+	text-align: center;
+	width: 50%;
+	z-index: 200;
+	@media (max-width: 848px) {
+		width: 100%;
+		margin-bottom: 0;
+	}
+	@media (max-width: 720px) {
+		font-size: 5rem;
+		}
+	span {
+		font-size: 10rem;
+		letter-spacing: 1.5rem;
+		color: $orangeRed;
+		@media (max-width: 720px) {
+			font-size: 7rem;
+		}
+	}
+}
+
+header p {
+	font-family: "Roboto";
+	font-size: 1.6rem;
+	font-weight: 400;
+	letter-spacing: 0.2rem;
+	color: $blueGrey;
+	line-height: 1.5;
+	width: 60%;
+	margin: 0 auto;
+	z-index: 200;
+	@media (max-width: 1000px) {
+		width: 100%;
+		padding: 5%;
+	}
+}

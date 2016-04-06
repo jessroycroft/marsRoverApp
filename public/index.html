@@ -5,130 +5,133 @@
 	<title>Today on Mars!</title>
 	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" href="styles/style.css">
-	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,900' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,900' rel='stylesheet' type='text/css'>
-	
+	<link href='https://fonts.googleapis.com/css?family=Orbitron:400,900|Roboto:400,900' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
 <header>
-	<h1>Today on <br><span>Mars!</span></h1>
-	<img src="images/marsplanet.svg" alt="Illustration of Mars">
-	<p>Never has there been a more exciting time for humanity as we prepare to leave behind the scorched remains of our wasting Earth, and look instead to the hopeful dunes of Mars! Now you can see what the intrepid Curiosity Rover sees as it blazes the trail, sending back data to us here on the ground. Select a camera from the control panel below to see the latest images of the beautiful, untamed landscape of our future home.</p>
-	<!-- <img src="images/marsrover.svg" alt=""> -->
+	<div class="innerWrapper">
+		<h1>Today on <br><span>Mars!</span></h1>
+		<img src="images/marsplanet.svg" alt="Illustration of Mars">
+		<p>Never has there been a more exciting time for humanity as we prepare to leave behind the scorched remains of our wasting Earth, and look instead to the hopeful dunes of Mars! Now you can see what the intrepid Curiosity Rover sees as it blazes the trail, sending back data to us here on the ground. Select a camera from the control panel below to see the latest images of the beautiful, untamed landscape of our future home.</p>
+	</div>
 </header>
 <div class="wrapper">
 	
 	<section class="photos">
-		<!-- Viewport for Rover photos -->
-		<div class="photoDisplay">
-			<img class="display" src="https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif">
-			<div class="displayOverlay">
-				<p class="error"></p>
-				<p class="camDisplay"></p>
-				<p class="dateDisplay"></p>
-			</div>
-		</div>
-		
-		<!-- Radio knobs to choose Rover camera -->
-		<section class="controlPanel leftControlPanel">
-			<div class="buttonWrapper">
-				<label for="cameraFhaz">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Front Hazard Avoidance Camera</p>
-				<p class="numberLabel">1</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="FHAZ">
-			</div>
-			
-			<div class="buttonWrapper">
-				<label for="cameraRhaz">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Rear Hazard Avoidance Camera</p>
-				<p class="numberLabel">2</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraRhaz" value="RHAZ">
-			</div>
-			
-			<div class="buttonWrapper">
-				<label for="cameraMast">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Mast Camera</p>
-				<p class="numberLabel">3</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMast" value="MAST">
-			</div>
-			
-			<div class="buttonWrapper">
-				<label for="cameraChemcam">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Chemistry and Camera Complex</p>
-				<p class="numberLabel">4</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraChemcam" value="CHEMCAM">
-			</div>
-		<!-- </section>
-		<section class="controlPanel rightControlPanel"> -->
-			<div class="buttonWrapper">
-				<label for="cameraMahli">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Mars Hand Lens Imager</p>
-				<p class="numberLabel">5</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMahli" value="MAHLI">
-			</div>
-			
-			<div class="buttonWrapper">
-				<label for="cameraMardi">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Mars Descent Imager</p>
-				<p class="numberLabel">6</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMardi" value="MARDI">
-			</div>
-
-			<div class="buttonWrapper seeMoreButtonWrapper">
-				<button></button>
-				<p class="buttonLabel">See another image</p>
-			</div>
-			
-			<div class="buttonWrapper">
-				<label for="cameraNavcam">
-					<div class="buttonKnob"></div>
-				</label>
-				<p class="textLabel">Navigation Camera</p>
-				<p class="numberLabel">7</p>
-				<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraNavcam" value="NAVCAM">
-			</div>
-		</section>
-		<section class="sidePanel">
-			<div class="legend">
-				<h3>Camera Controls</h3>
-				<p>1: Front Hazard Avoidance Camera</p>
-				<p>2: Rear Hazard Avoidance Camera</p>
-				<p>3: Mast Camera</p>
-				<p>4: Chemistry and Camera Complex</p>
-				<p>5: Mars Hand Lens Imager</p>
-				<p>6: Mars Descent Imager</p>
-				<p>7: Navigation Camera</p>
-			</div>
-			<div class="panelHeader">
-				<h3>Atmosphere Conditions</h3>
-				<div class="weatherPanel">
-					<p class="earthDate">Latest weather data as of: <span>earthDate</span></p>
-					<p class="tempHigh">High temp: <span>Number</span></p>
-					<p class="tempLow">Low Temp: <span>Number</span></p>
-					<p class="skies">Skies today are: <span>value</span></p>
-					<p class="sunrise">Sunrise: <span>sunrise</span></p>
-					<p class="sunset">Sunset: <span>sunset</span></p>
+		<div class="innerWrapper">
+			<!-- Viewport for Rover photos -->
+			<div class="photoDisplay">
+				<img class="display" src="https://media.giphy.com/media/xaMg6NGwH2fFS/giphy.gif">
+				<div class="displayOverlay">
+					<p class="error"></p>
+					<p class="camDisplay"></p>
+					<p class="dateDisplay"></p>
 				</div>
 			</div>
 			
-			
-		</section>
-	</section>
+			<!-- Radio knobs to choose Rover camera -->
+			<section class="controlPanel leftControlPanel">
+				<div class="buttonWrapper">
+					<label for="cameraFhaz">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Front Hazard Avoidance Camera</p>
+					<p class="numberLabel">1</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraFhaz" value="FHAZ">
+				</div>
+				
+				<div class="buttonWrapper">
+					<label for="cameraRhaz">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Rear Hazard Avoidance Camera</p>
+					<p class="numberLabel">2</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraRhaz" value="RHAZ">
+				</div>
+				
+				<div class="buttonWrapper">
+					<label for="cameraMast">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Mast Camera</p>
+					<p class="numberLabel">3</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMast" value="MAST">
+				</div>
+				
+				<div class="buttonWrapper">
+					<label for="cameraChemcam">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Chemistry and Camera Complex</p>
+					<p class="numberLabel">4</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraChemcam" value="CHEMCAM">
+				</div>
 
+				<div class="buttonWrapper">
+					<label for="cameraMahli">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Mars Hand Lens Imager</p>
+					<p class="numberLabel">5</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMahli" value="MAHLI">
+				</div>
+				
+				<div class="buttonWrapper">
+					<label for="cameraMardi">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Mars Descent Imager</p>
+					<p class="numberLabel">6</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraMardi" value="MARDI">
+				</div>
+				
+				<!-- 'See More Images' button - hidden until camera is selected -->
+				<div class="buttonWrapper seeMoreButtonWrapper">
+					<button></button>
+					<p class="buttonLabel">See another image</p>
+				</div>
+				
+				<div class="buttonWrapper">
+					<label for="cameraNavcam">
+						<div class="buttonKnob"></div>
+					</label>
+					<p class="textLabel">Navigation Camera</p>
+					<p class="numberLabel">7</p>
+					<input type="radio" class="cameraChoice" name="cameraChoice" id="cameraNavcam" value="NAVCAM">
+				</div>
+			</section>
+
+			<section class="sidePanel">
+				<!-- Camera legend - hidden until mobile size -->
+				<div class="legend">
+					<h3>Camera Controls</h3>
+					<p>1: Front Hazard Avoidance Camera</p>
+					<p>2: Rear Hazard Avoidance Camera</p>
+					<p>3: Mast Camera</p>
+					<p>4: Chemistry and Camera Complex</p>
+					<p>5: Mars Hand Lens Imager</p>
+					<p>6: Mars Descent Imager</p>
+					<p>7: Navigation Camera</p>
+				</div>
+				<!-- Weather panel -->
+				<div class="panelHeader">
+					<h3>Atmosphere Conditions</h3>
+					<div class="weatherPanel">
+						<p class="earthDate">Latest weather data as of: <span>earthDate</span></p>
+						<p class="tempHigh">High temp: <span>Number</span></p>
+						<p class="tempLow">Low Temp: <span>Number</span></p>
+						<p class="skies">Skies today are: <span>value</span></p>
+						<p class="sunrise">Sunrise: <span>sunrise</span></p>
+						<p class="sunset">Sunset: <span>sunset</span></p>
+					</div>
+				</div>	
+				
+			</section>
+		</div>
+	</section>
 </div>
+
 <footer>
 	<p>Designed and developed by <a href="http://jessroycroft.com">Jess Roycroft</a> - 2016</p>
 	<p>Illustrations by Anthony Bossard, Oliviu Stoian, and Greer Mosher from the <a href="http://thenounproject.com">The Noun Project</a>.</p>

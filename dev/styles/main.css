@@ -143,22 +143,34 @@ body {
   margin: 20px 0; }
 
 .wrapper {
-  display: flex; }
+  display: flex;
+  margin: 0 auto; }
   @media (max-width: 736px) {
     .wrapper {
       display: flex;
       flex-direction: column; } }
 
+.innerWrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto; }
+  @media (max-width: 736px) {
+    .innerWrapper {
+      flex-direction: column; } }
+
+p {
+  font-size: 1.3rem; }
+
 header {
   background: #e6e1c5;
   padding: 2% 5%;
-  display: flex;
-  align-items: center;
   background-image: url("../images/marsrover.svg");
   background-repeat: no-repeat;
   background-size: 400px;
   background-position: right top;
   position: relative; }
+  header .innerWrapper {
+    align-items: center; }
   @media (max-width: 768px) {
     header {
       background-image: none; } }
@@ -211,109 +223,19 @@ header p {
       width: 100%;
       padding: 5%; } }
 
-.sidePanel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 169px; }
-  .sidePanel h3 {
-    text-align: center; }
-  .sidePanel .legend {
-    display: none; }
-    .sidePanel .legend h3 {
-      padding-bottom: 10px; }
-  @media (max-width: 736px) {
-    .sidePanel {
-      flex-direction: row; }
-      .sidePanel .panelHeader, .sidePanel .legend {
-        width: 50%; }
-      .sidePanel .legend {
-        display: block;
-        align-self: flex-end; } }
-
-.weatherPanel {
-  background: #0a1702;
-  color: #75d023;
-  font-family: "Orbitron";
-  font-weight: 400;
-  text-transform: lowercase;
-  letter-spacing: 1.5px;
-  padding: 2%;
-  margin-left: 20px;
-  border-radius: 10%; }
-
 .photos {
   order: -1;
-  display: flex;
   padding: 5%;
   z-index: 200;
-  width: 100%; }
-  @media (max-width: 736px) {
+  width: 100%;
+  background-image: url("../images/brushed_alu_dark/brushed_alu_dark.png");
+  margin-bottom: 0; }
+  @media (max-width: 360px) {
     .photos {
-      flex-direction: column; } }
+      padding: 1%; } }
   @media (max-width: 320px) {
     .photos {
       padding: 2%; } }
-
-p {
-  font-size: 1.3rem; }
-
-.controlPanel {
-  width: 30%;
-  max-width: 300px;
-  order: -1;
-  display: flex;
-  flex-flow: row wrap; }
-  @media (max-width: 1150px) {
-    .controlPanel {
-      width: 42%; } }
-  @media (max-width: 1134px) {
-    .controlPanel {
-      width: 50%; } }
-  @media (max-width: 1050px) {
-    .controlPanel {
-      width: 60%; } }
-  @media (max-width: 736px) {
-    .controlPanel {
-      order: 0;
-      width: 80%;
-      margin: 0 auto;
-      padding-top: 20px; } }
-  @media (max-width: 736px) {
-    .controlPanel .buttonWrapper {
-      width: 20%; } }
-
-p.buttonLabel, .controlPanel p, h3, .legend p {
-  width: 150px;
-  font-family: "Mil Spec 33558";
-  color: rgba(0, 0, 0, 0.7);
-  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 1.3rem;
-  padding-top: 10px; }
-  @media (max-width: 1134px) {
-    p.buttonLabel, .controlPanel p, h3, .legend p {
-      font-size: 1.2rem; } }
-  @media (max-width: 1000px) {
-    p.buttonLabel, .controlPanel p, h3, .legend p {
-      width: auto; } }
-  @media (max-width: 736px) {
-    p.buttonLabel, .controlPanel p, h3, .legend p {
-      font-size: 1rem; } }
-
-.numberLabel {
-  display: none; }
-  @media (max-width: 736px) {
-    .numberLabel {
-      display: block; } }
-
-.textLabel {
-  display: block; }
-  @media (max-width: 736px) {
-    .textLabel {
-      display: none; } }
 
 .display {
   width: 100%;
@@ -363,6 +285,64 @@ p.error {
   padding: 10px;
   font-family: "Orbitron"; }
 
+.controlPanel {
+  width: 30%;
+  max-width: 300px;
+  order: -1;
+  display: flex;
+  flex-flow: row wrap; }
+  @media (max-width: 1150px) {
+    .controlPanel {
+      width: 42%; } }
+  @media (max-width: 1134px) {
+    .controlPanel {
+      width: 50%; } }
+  @media (max-width: 1050px) {
+    .controlPanel {
+      width: 60%; } }
+  @media (max-width: 736px) {
+    .controlPanel {
+      order: 0;
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 20px;
+      justify-content: center; } }
+  @media (max-width: 736px) {
+    .controlPanel .buttonWrapper {
+      width: 20%; } }
+
+p.buttonLabel, .controlPanel p, h3, .legend p {
+  width: 150px;
+  font-family: "Mil Spec 33558";
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  padding-top: 10px; }
+  @media (max-width: 1134px) {
+    p.buttonLabel, .controlPanel p, h3, .legend p {
+      font-size: 1.2rem; } }
+  @media (max-width: 1000px) {
+    p.buttonLabel, .controlPanel p, h3, .legend p {
+      width: auto; } }
+  @media (max-width: 736px) {
+    p.buttonLabel, .controlPanel p, h3, .legend p {
+      font-size: 1rem; } }
+
+.numberLabel {
+  display: none; }
+  @media (max-width: 736px) {
+    .numberLabel {
+      display: block; } }
+
+.textLabel {
+  display: block; }
+  @media (max-width: 736px) {
+    .textLabel {
+      display: none; } }
+
 input[type='radio'] {
   display: none; }
 
@@ -398,11 +378,6 @@ label {
 .buttonKnob {
   background: #b85037; }
 
-.photos {
-  background-image: url("../images/brushed_alu_dark/brushed_alu_dark.png");
-  padding-bottom: 5%;
-  margin-bottom: 0; }
-
 @media (max-width: 1000px) {
   .buttonWrapper {
     width: 40%; } }
@@ -421,6 +396,38 @@ button {
   margin-top: 10px; }
   button:focus {
     outline: none; }
+
+.sidePanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 169px; }
+  .sidePanel h3 {
+    text-align: center; }
+  .sidePanel .legend {
+    display: none; }
+    .sidePanel .legend h3 {
+      padding-bottom: 10px; }
+  @media (max-width: 736px) {
+    .sidePanel {
+      flex-direction: row; }
+      .sidePanel .panelHeader, .sidePanel .legend {
+        width: 50%; }
+      .sidePanel .legend {
+        display: block;
+        align-self: flex-end; } }
+
+.weatherPanel {
+  background: #0a1702;
+  color: #75d023;
+  max-width: 270px;
+  font-family: "Orbitron";
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: 1.5px;
+  padding: 2%;
+  margin-left: 20px;
+  border-radius: 10%; }
 
 footer {
   background: #e6e1c5;
