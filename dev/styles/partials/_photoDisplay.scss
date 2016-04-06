@@ -5,6 +5,8 @@
 	width: 100%;
 	background-image: url('../images/brushed_alu_dark/brushed_alu_dark.png');
 	margin-bottom: 0;
+	border-top: 20px solid $cod;
+	border-bottom: 20px solid $cod;
 	@media (max-width: 360px) {
 		padding: 1%;
 	}
