@@ -230,8 +230,8 @@ header p {
   width: 100%;
   background-image: url("../images/brushed_alu_dark/brushed_alu_dark.png");
   margin-bottom: 0;
-  border-top: 20px solid #525453;
-  border-bottom: 20px solid #525453; }
+  border-top: 20px solid #415155;
+  border-bottom: 20px solid #415155; }
   @media (max-width: 360px) {
     .photos {
       padding: 1%; } }
